@@ -177,7 +177,7 @@ Function CreateBackup2(spectrum)
 	WAVE spectrum
 	
 	newdatafolder/O :originalspectra
-	duplicate spectrum, :originalspectra:$nameofwave(spectrum)
+	duplicate/O spectrum, :originalspectra:$nameofwave(spectrum)
 End
 
 
@@ -200,6 +200,11 @@ Function ButtonSubstractReference(control) : ButtonControl
 		if(stringmatch(backgroundstring, "(no selection)") == 1)
 			Abort "No background wave specified"
 		endif
+		
+		//Error if background wave is chosen as wave to be subtracted from
+		if(WhichListItem(backgroundstring,s.spectralist,";") != -1)
+			Abort "Background wave was also selected as wave to be subtracted from."
+		endif
 
 		WAVE backgroundwave = $backgroundstring
 		CreateBackUp2(backgroundwave) 
@@ -214,7 +219,7 @@ Function ButtonSubstractReference(control) : ButtonControl
 		endfor	
 		
 		Print "Background spectrum: " + backgroundstring + " substracted from the following spectra: " + s.spectralist
-		Killwaves backgroundwave 
+
 		WS_UpdateWaveSelectorWidget("AbsorptionPanel", "SpectraSelectionList")
 		break
 	case -1: //control being killed
