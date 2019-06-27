@@ -2,7 +2,7 @@
 #pragma moduleName=startup	
 
 //	IGOR procedure file.
-// Contents of PhysicalConstants.ipf, place into Documents:WaveMetrics:Igor X Users Folder:Igor Procedures
+// Contents of PhysicalConstants v1.0.ipf, place into Documents:WaveMetrics:Igor X Users Folder:Igor Procedures
 //	Compiled by T. Hertel
 //	Source of constant values: https://en.wikipedia.org/ (2019)
 //	Version history
